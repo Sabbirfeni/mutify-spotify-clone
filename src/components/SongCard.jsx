@@ -1,8 +1,8 @@
 import React from 'react'
 
-function SongCard() {
+function SongCard({ music }) {
   return (
-    <div className='w-full bg-gray-500'>SongCard</div>
+    <div className='w-full bg-gray-500'>{music.name}</div>
   )
 }
 

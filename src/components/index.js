@@ -1,5 +1,5 @@
 import Error from "./Error";
-import Loader from "./Loader";
+import Loader from "./loader/Loader";
 import SongCard from "./SongCard";
 
 export {
