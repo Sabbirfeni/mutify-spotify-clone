@@ -10,7 +10,7 @@ function Discover() {
   const getSpotify = async () => {
     setLoading(true)
     try {
-      fetch('https://v1.nocodeapi.com/sabbir/spotify/iblZwYTGVvkrOqLE/search?q=hiphop', {
+      fetch('https://v1.nocodeapi.com/sabbir/spotify/iblZwYTGVvkrOqLE/search?q=islamic', {
         method: "get",
         headers: {
           "Content-Type": "application/json"
@@ -57,6 +57,7 @@ function Discover() {
             {data?.map((music, i) => {
               return <SongCard key={music.id} music={music} i={i}/>
             })}
+            
         </div>
     </div>
   )
