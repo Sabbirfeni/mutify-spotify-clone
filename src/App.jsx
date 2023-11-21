@@ -5,6 +5,7 @@ import Controls from '../src/components/MusicPlayer/Controls'
 import SearchInput from './components/SearchInput'
 import { fetchToken } from './redux/features/musicSlice'
 import Sidebar from './components/Sidebar'
+import TopPlay from './components/TopPlay'
 
 function App() {
     // const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function App() {
                     {/* <Controls/> */}
                 </div>
                 <div className='xl:sticky relative top-0 h-fit'>
-                    top play
+                    <TopPlay/>
                 </div>
             </div>
         </div>
