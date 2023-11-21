@@ -1,12 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import playerReducer from './features/playerSlice';
-import { noCodeApi } from './services/noCodeApi';
+// import tokenReducer from './features/tokenSlice';
+import musicReducer from './features/musicSlice';
 
 export const store = configureStore({
   reducer: {
-    [noCodeApi.reducerPath]: noCodeApi.reducer,
     player: playerReducer,
+    music: musicReducer
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(noCodeApi.middleware)
+  // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(spotifyApi.middleware)
 });

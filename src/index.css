@@ -20,7 +20,7 @@ html {
 
 /* Active Navigation Link */
 .active {
-    @apply text-cyan-500;
+    text-color: cyan;
   }
   
   .active svg {
