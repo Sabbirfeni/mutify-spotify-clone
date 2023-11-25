@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom'
-import Controls from '../src/components/MusicPlayer/Controls'
 import SearchInput from './components/SearchInput'
-import { fetchToken } from './redux/features/musicSlice'
 import Sidebar from './components/Sidebar'
 import TopPlay from './components/TopPlay'
-
 function App() {
     // const dispatch = useDispatch();
     // useEffect(() => {
@@ -24,12 +21,13 @@ function App() {
                     <Outlet/>
                     {/* <Controls/> */}
                 </div>
-                <div className='xl:sticky relative top-0 h-fit'>
+                <div className='xl:sticky relative top-0 h-fit '>
                     <TopPlay/>
                 </div>
             </div>
         </div>
-        {/* <div className='bg-gray-300 md:block '> active song </div> */}
+        {/* <div className='bg-gray-300 w-full fixed bottom-0'> <MusicPlayer/> </div> */}
+    
     </div>
   )
 }

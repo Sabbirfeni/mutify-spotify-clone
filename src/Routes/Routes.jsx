@@ -2,6 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import { Discover } from "../pages";
+import SongDetails from "../pages/SongDetails";
 
 const router = createBrowserRouter([
     {
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Discover/>
+            },
+            {
+                path: '/songs/:songid',
+                element: <SongDetails/>
             },
             { 
                 path: '*',

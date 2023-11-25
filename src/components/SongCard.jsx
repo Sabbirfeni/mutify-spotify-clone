@@ -21,7 +21,7 @@ function SongCard({ isPlaying, activeSong, music, i, data }) {
     console.log(isPlaying)
 
   }
-  
+   
   return (
     <div className='flex flex-col w-full p-4 bg-gray-300 backdrop-blur-sm animate-slideup duration-1000 rounded-lg cursor-pointer'>
       <div className='relative w-full h-56 group'>

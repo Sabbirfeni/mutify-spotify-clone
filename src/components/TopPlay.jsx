@@ -15,10 +15,18 @@ function TopPlay() {
     const dispatch = useDispatch()
     const { activeSong, isPlaying } = useSelector(state => state.player)
     const { allMusic } = useSelector(state => state.music)
-    const topPlays = allMusic?.albums.items.slice(0, 5)
-    console.log(topPlays)
-    const divRef = useRef(null)
+    const topPlays = allMusic?.albums?.items.slice(0, 5)
+    // console.log(topPlays)
+    const handlePauseClick = () => {
+        dispatch(playPause(false))
+    }
+    const handlePlayClick = (song, i) => {
+        dispatch(setActiveSong({ song, data, i }))
+        dispatch(playPause(true))
+    }
 
+    const divRef = useRef(null)
+  
     const TopChartCard = ({ song, i, isPlaying, activeSong, handlePauseClick, handlePlayClick }) => {
         return <div className='w-full flex flex-row items-center hover:bg-[#4c426c] py-3 p-4 rounded-lg cursor-pointer'>
             <h3 className='font-bold text-base mr-3'>{i + 1}.</h3>
@@ -46,7 +54,7 @@ function TopPlay() {
 
   return (
     <div ref={divRef} className='xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 xl:max-w-[500px] max-w-full flex-col'>
-        <div className='w-full flex flex-col'>
+        <div className='w-full xl:flex hidden flex-col'>
             <div className='flex flex-row justify-between items-center'>
                 <h2 className='font-bold text-2xl'>Top Charts</h2>
                 <Link to='/top-charts'>
@@ -59,7 +67,7 @@ function TopPlay() {
                         activeSong={activeSong}
                         isPlaying={isPlaying}
                         // handlePauseClick={handlePauseClick}
-                        // handlePlayClick={handlePlayClick}
+                        // handlePlayClick={() => handlePlayClick(song, i)}
                     />
                 ))}
             </div>
