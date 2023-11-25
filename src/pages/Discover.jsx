@@ -14,10 +14,10 @@ function Discover() {
   const {isPlaying, activeSong } = useSelector(state => state.player)
 
   const { allMusic, isLoading, error, token } = musicState
-
+ 
   useEffect(() => {
       dispatch(fetchToken())
-        
+         console.log('discomver')
       dispatch(fetchMusic(musicState))
   }, [])
     

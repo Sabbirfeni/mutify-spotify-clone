@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import { Discover } from "../pages";
 import SongDetails from "../pages/SongDetails";
+import ArtistDetails from "../pages/ArtistDetails";
 
 const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
             {
                 path: '/songs/:songid',
                 element: <SongDetails/>
+            },
+            {
+                path: '/artists/:artistId',
+                element: <ArtistDetails/>
             },
             { 
                 path: '*',

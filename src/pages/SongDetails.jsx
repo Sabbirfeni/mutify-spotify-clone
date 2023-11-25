@@ -13,7 +13,7 @@ function SongDetails() {
     const { activeSong, isPlaying } = useSelector(state => state.player)
     const { isLoading, musicData, error } = useSelector(state => state.musicDetail)
     const { token, allMusic } = useSelector(state => state.music)
-    console.log(allMusic)
+
     useEffect(() => {
         dispatch(fetchSong({token, songid}))
     }, [songid])
@@ -26,12 +26,12 @@ function SongDetails() {
         return (
             <div className='flex flex-col'>
                 <DetailsHeader artistId='' songData={musicData}/>
-                {/* <div className='mb-10 mt-10'>
+                <div className='mb-10 mt-10'>
                     <h2 className='text-3xl font-bold'>Details:</h2>
                     <div className="mt-5">
                         <div className='flex md:flex-row flex-col'>
-                            <img className='md:w-80 w-full' src={musicData.images[0].url} alt="image" />
-                            <div className='md:pl-6 pl-0 md:pt-0 pt-3'>
+                            {/* <img className='md:w-80 w-full' src={musicData.images[0].url} alt="image" /> */}
+                            <div className=''>
                                 <p className='text-base my-1'><span className='font-bold'>Song Name : </span>{musicData.name}</p>
                                 <p className='text-base my-1'><span className='font-bold'>Rank : </span>{musicData.popularity}</p>
                                 <p className='text-base my-1'><span className='font-bold'>Artist Name : </span>{musicData.artists[0].name}</p>
@@ -41,8 +41,8 @@ function SongDetails() {
                         </div>
 
                     </div>
-                </div> */}
-                <RelatedSongs/>
+                </div>
+                <RelatedSongs allMusic={allMusic}/>
             </div>
         )
     }

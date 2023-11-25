@@ -57,12 +57,34 @@ export const fetchSong = createAsyncThunk('song/fetchSong', async parameter => {
     
 })
 
+export const fetchArtist = createAsyncThunk('artist/fetchArtist', async parameter => {
+   
+    const { token, artistId } = parameter
+     const parameters = {
+         method: 'get',
+         mode: 'cors',
+         headers: {
+             'Content-Type': 'application/json',
+             'Authorization': `Bearer ${token}`
+         }
+     }
+     
+     try {
+         const res = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, parameters)
+         const data = await res.json()
+         return data
+     } catch(err) {
+         console.log(err.message)
+     }
+     
+ })
 const musicSlice = createSlice({
     name: 'music',
     initialState: {
         isLoading: false,
         allMusic: null,
         song: null,
+        artist: null,
         error: null,
         searchKeyword: '',
         token: null
@@ -100,6 +122,21 @@ const musicSlice = createSlice({
         .addCase(fetchMusic.rejected, (state, action) => {
             state.isLoading = false;
             state.allMusic = null;
+            state.error = action.payload.error.message;
+          });
+
+        // Artist Builder
+        builder.addCase(fetchArtist.pending, state => {
+            state.isLoading = true
+        })
+        .addCase(fetchArtist.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.artist = action.payload;
+            state.error = null
+        })
+        .addCase(fetchArtist.rejected, (state, action) => {
+            state.isLoading = false;
+            state.artist = null;
             state.error = action.payload.error.message;
           });
         
