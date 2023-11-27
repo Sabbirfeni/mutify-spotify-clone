@@ -20,9 +20,9 @@ export const fetchToken = createAsyncThunk('token/fetchToken', async () => {
 })
 
 // Music fetching function
-export const fetchMusic = createAsyncThunk('musics/fetchMusics', async music => {
-    const { token, searchKeyword  } = music
-
+export const fetchMusic = createAsyncThunk('musics/fetchMusics', async parameter => {
+    const { searchValue, music  } = parameter;
+    const { token } = music;
     const parameters = {
         method: 'get',
         headers: {
@@ -30,7 +30,7 @@ export const fetchMusic = createAsyncThunk('musics/fetchMusics', async music => 
             'Authorization': `Bearer ${token}`
         }
     }
-    const res = await fetch(`${API_URL}/search?q=${searchKeyword !== '' ? searchKeyword : 'islamic'}&type=album&limit=50`, parameters)
+    const res = await fetch(`${API_URL}/search?q=${searchValue !== '' ? searchValue : 'quran'}&type=album&limit=50`, parameters)
     const data = res.json()
     return data
 })
@@ -78,13 +78,62 @@ export const fetchArtist = createAsyncThunk('artist/fetchArtist', async paramete
      }
      
  })
+
+ export const fetchTopArtists = createAsyncThunk('artist/fetchTopArtist', async parameter => {
+   
+    const { token } = parameter
+    // console.log(token)
+     const parameters = {
+         method: 'get',
+         headers: {
+             'Content-Type': 'application/json',
+             'Authorization': `Bearer ${token}`
+         }
+     }
+     
+     try {
+         const res = await fetch(`${API_URL}/search?q='top artists'&type=album&limit=50`, parameters)
+         const data = res.json()
+         return data
+     } catch(err) {
+         console.log(err.message)
+     }
+     
+ })
+
+ export const getSongByCountry = createAsyncThunk('countrySong/fetchCountrySong', async parameter => {
+   
+    const { token, country } = parameter
+
+     const parameters = {
+         method: 'get',
+         mode: 'cors',
+         headers: {
+             'Content-Type': 'application/json',
+             'Authorization': `Bearer ${token}`
+         }
+     }
+     
+     try {
+         const res = await fetch(`${API_URL}/browse/categories?country=${country}&locale=sv_BD`, parameters)
+         const data = await res.json()
+         return data
+     } catch(err) {
+         console.log(err.message)
+     }
+     
+ })
+
+
 const musicSlice = createSlice({
     name: 'music',
     initialState: {
         isLoading: false,
         allMusic: null,
         song: null,
-        artist: null,
+        artistData: null,
+        countrySongs: null,
+        topArtists: null,
         error: null,
         searchKeyword: '',
         token: null
@@ -122,7 +171,7 @@ const musicSlice = createSlice({
         .addCase(fetchMusic.rejected, (state, action) => {
             state.isLoading = false;
             state.allMusic = null;
-            state.error = action.payload.error.message;
+            state.error = action.payload;
           });
 
         // Artist Builder
@@ -131,14 +180,45 @@ const musicSlice = createSlice({
         })
         .addCase(fetchArtist.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.artist = action.payload;
+            state.artistData = action.payload;
             state.error = null
         })
         .addCase(fetchArtist.rejected, (state, action) => {
             state.isLoading = false;
-            state.artist = null;
+            state.artistData = null;
             state.error = action.payload.error.message;
           });
+        
+        // Get Song by Country Builder
+        builder.addCase(getSongByCountry.pending, state => {
+            state.isLoading = true
+        })
+        .addCase(getSongByCountry.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.countrySongs = action.payload;
+            state.error = null
+        })
+        .addCase(getSongByCountry.rejected, (state, action) => {
+            state.isLoading = false;
+            state.countrySongs = null;
+            state.error = action.payload.error.message;
+        });
+        
+        // Get Top Artists
+        builder.addCase(fetchTopArtists.pending, state => {
+            state.isLoading = true
+        })
+        .addCase(fetchTopArtists.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.topArtists = action.payload;
+            state.error = null
+        })
+        .addCase(fetchTopArtists.rejected, (state, action) => {
+            state.isLoading = false;
+            state.topArtists = null;
+            state.error = action.payload.error.message;
+        });
+        
         
     }
 })

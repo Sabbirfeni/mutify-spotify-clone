@@ -4,6 +4,8 @@ import App from "../App";
 import { Discover } from "../pages";
 import SongDetails from "../pages/SongDetails";
 import ArtistDetails from "../pages/ArtistDetails";
+import ArroundYou from "../pages/ArroundYou";
+import TopArtists from "../pages/TopArtists";
 
 const router = createBrowserRouter([
     {
@@ -11,16 +13,24 @@ const router = createBrowserRouter([
         element: <App/>,
         children: [
             {
-                path: '/',
+                path: '',
                 element: <Discover/>
             },
             {
-                path: '/songs/:songid',
+                path: 'songs/:songid',
                 element: <SongDetails/>
             },
             {
-                path: '/artists/:artistId',
+                path: 'artists/:artistId',
                 element: <ArtistDetails/>
+            },
+            {
+                path: 'around-you',
+                element: <ArroundYou/>
+            },
+            {
+                path: 'top-artists',
+                element: <TopArtists/>
             },
             { 
                 path: '*',

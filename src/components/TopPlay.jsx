@@ -16,7 +16,7 @@ function TopPlay() {
     const dispatch = useDispatch()
     const { activeSong, isPlaying } = useSelector(state => state.player)
     const { allMusic } = useSelector(state => state.music)
-    const topPlays = allMusic?.albums?.items.slice(0, 5)
+    const topPlays = allMusic?.albums?.items.slice(0, 6)
     // console.log(topPlays)
     const handlePauseClick = () => {
         dispatch(playPause(false))
@@ -37,9 +37,9 @@ function TopPlay() {
     <div ref={divRef} className='xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 xl:max-w-[500px] max-w-full flex-col'>
         <div className='w-full xl:flex hidden flex-col'>
             <div className='flex flex-row justify-between items-center'>
-                <h2 className='font-bold text-2xl'>Top Charts</h2>
-                <Link to='/top-charts'>
-                    <p className='text-base cursor-pointer hover:text-gray-500'>See more</p>
+                <h2 className='font-bold text-2xl text-white'>Top Charts</h2>
+                <Link to='/top-artists'>
+                    <p className='text-base cursor-pointer hover:text-gray-500 text-white'>See more</p>
                 </Link>
             </div>
             <div className='mt-4 flex flex-col gap-0'>
@@ -54,11 +54,11 @@ function TopPlay() {
             </div>
         </div>
 
-        <div className='w-full flex flex-col mt-8'>
-            <div className='flex flex-row justify-between items-center'>
-                <h2 className='font-bold text-2xl'>Top Artists</h2>
+        <div className='w-full flex flex-col mt-6'>
+            <div className='flex flex-row justify-between items-center mb-4'>
+                <h2 className='font-bold text-2xl text-white'>Top Artists</h2>
                 <Link to='/top-artists'>
-                    <p className='text-base cursor-pointer hover:text-gray-500'>See more</p>
+                    <p className='text-base cursor-pointer text-white hover:text-gray-500'>See more</p>
                 </Link>
             </div>
             <Swiper

@@ -12,8 +12,8 @@ function ArtistDetails() {
     const dispatch = useDispatch()
     const { activeSong, isPlaying } = useSelector(state => state.player)
     const { isLoading, musicData, error } = useSelector(state => state.musicDetail)
-    const { token, allMusic, artist } = useSelector(state => state.music)
-    console.log(artist)
+    const { token, allMusic, artistData } = useSelector(state => state.music)
+    console.log(artistData)
     useEffect(() => {
         dispatch(fetchArtist({token, artistId}))
     }, [artistId])
@@ -22,29 +22,25 @@ function ArtistDetails() {
         return <Loader/>
     }
 
-    if(musicData) {
+    if(artistData) {
         return (
-            <div>artist fetched</div>
-            // <div className='flex flex-col'>
-            //     <DetailsHeader artistId='' songData={musicData}/>
-            //     <div className='mb-10 mt-10'>
-            //         <h2 className='text-3xl font-bold'>Details:</h2>
-            //         <div className="mt-5">
-            //             <div className='flex md:flex-row flex-col'>
-            //                 {/* <img className='md:w-80 w-full' src={musicData.images[0].url} alt="image" /> */}
-            //                 <div className=''>
-            //                     <p className='text-base my-1'><span className='font-bold'>Song Name : </span>{musicData.name}</p>
-            //                     <p className='text-base my-1'><span className='font-bold'>Rank : </span>{musicData.popularity}</p>
-            //                     <p className='text-base my-1'><span className='font-bold'>Artist Name : </span>{musicData.artists[0].name}</p>
-            //                     <p className='text-base my-1'><span className='font-bold'>Released on : </span>{musicData.release_date}</p>
-            //                     <p className='text-base my-1'><span className='font-bold'>Copyrights : </span>{musicData.copyrights[0].text}</p>
-            //                 </div>    
-            //             </div>
+            <div className='flex flex-col'>
+                <DetailsHeader artistData={artistData} songData=''/>
+                <div className='mb-10 mt-10'>
+                    <h2 className='text-3xl font-bold text-white'>About Artist:</h2>
+                    <div className="mt-5">
+                        <div className='flex md:flex-row flex-col'>
+                            {/* <img className='md:w-80 w-full' src={musicData.images[0].url} alt="image" /> */}
+                            <div className='text-white'>
+                                <p className='text-base my-1'><span className='font-bold'>Followers : </span>{artistData.followers.total}</p>
+                                <p className='text-base my-1'><span className='font-bold'>Rank : </span>{artistData.popularity}</p>
+                            </div>    
+                        </div>
 
-            //         </div>
-            //     </div>
-            //     <RelatedSongs/>
-            // </div>
+                    </div>
+                </div>
+                {/* <RelatedSongs/> */}
+            </div>
         )
     }
 }

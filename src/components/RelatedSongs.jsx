@@ -8,7 +8,7 @@ import SongBar from './SongBar'
 function RelatedSongs() {
 const dispatch = useDispatch() 
     const musicState = useSelector(state => state.music)
-    // const { allMusic, isLoading, error, token } = musicState
+    const { allMusic, isLoading, error, token } = musicState
     console.log(allMusic)
     // const relatedSong = allMusic.albums.items.reverse().slice(1, 6)
     const { isPlaying, activeSong } = useSelector(state => state.player)
@@ -21,7 +21,7 @@ const dispatch = useDispatch()
         dispatch(playPause(true))
     }
 
-    useEffect(() => {
+    useEffect(() => { 
         // dispatch(fetchMusic(musicState))
     }, [])
 
