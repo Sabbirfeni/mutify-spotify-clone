@@ -21,7 +21,7 @@ export const fetchToken = createAsyncThunk('token/fetchToken', async () => {
 
 // Music fetching function
 export const fetchMusic = createAsyncThunk('musics/fetchMusics', async parameter => {
-    const { searchValue, music  } = parameter;
+    const { queryValue, music  } = parameter;
     const { token } = music;
     const parameters = {
         method: 'get',
@@ -30,7 +30,8 @@ export const fetchMusic = createAsyncThunk('musics/fetchMusics', async parameter
             'Authorization': `Bearer ${token}`
         }
     }
-    const res = await fetch(`${API_URL}/search?q=${searchValue !== '' ? searchValue : 'quran'}&type=album&limit=50`, parameters)
+    console.l
+    const res = await fetch(`${API_URL}/search?q=${queryValue !== '' ? queryValue : 'quran'}&type=album&limit=50`, parameters)
     const data = res.json()
     return data
 })

@@ -7,8 +7,6 @@ import { fetchMusic, fetchToken } from '../redux/features/musicSlice'
  
 
 
->>>>>>> 66aaa4f71e7428d014ae96c15b9c1f4905370062
- 
  
 function Discover() { 
   const dispatch = useDispatch() 
@@ -16,13 +14,22 @@ function Discover() {
   const {isPlaying, activeSong } = useSelector(state => state.player)
   const searchValue = useSelector(state => state.music.searchKeyword)
   const { allMusic, isLoading, error, token } = music
-
+  const [ genreValue, setGenreValue ] = useState('')
   const divRef = useRef(null)
+
+  const fetchMusicOnGenreChange = e => {
+    console.log(e.target.value)
+    const inputValue = e.target.value;
+    setGenreValue(inputValue)
+    dispatch(fetchMusic({ music, queryValue: inputValue }))
+  }
 
   useEffect(() => {  
 
       dispatch(fetchToken())
-      dispatch(fetchMusic({ music, searchValue }))
+
+        dispatch(fetchMusic({ music, queryValue: searchValue }))
+
       
   }, [])
      
@@ -36,8 +43,8 @@ function Discover() {
             Discover <span className='text-red-500'>"Genre Title"</span>
           </h2>
           <select className='bg-black text-gray-300 px-3 py-2 text-sm rounded-lg outline-none sm:mt-0 mt-5'
-            onChange={() => {}}
-            value=''
+            onChange={(e) => fetchMusicOnGenreChange(e)}
+            value={genreValue}
           >
             {genres.map(genre => {
               return <option key={genre.value} value={genre.value}>
