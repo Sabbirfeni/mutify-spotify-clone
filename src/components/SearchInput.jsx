@@ -12,6 +12,7 @@ function SearchInput() {
     const navigate = useNavigate();
 
     const makeRequest = e => {
+      e.preventDefault();
       if(e.key === 'Enter') {
         navigate('/')
         dispatch(fetchMusic({music , queryValue: searchValue}))
@@ -20,10 +21,8 @@ function SearchInput() {
     }
 
     return (
-      <form action="" autoComplete='off' className='p-2 text-gray-400 focus-within:text-gray-600'>
-        <label htmlFor="serch-field" className='sr-only'>Search all songs</label>
-        <div className='flex flex-row justify-start items-center'>
-          <FiSearch className='w-5 h-5 ml-4'/>
+      <div className='flex flex-row justify-start items-center'>
+          <FiSearch className='w-5 h-5 ml-4 text-gray-600'/>
           <input
             className='flex-1 bg-transparent border-none outline-none placeholder:text-gray-500 text-base text-white p-4'
             name='search-field'
@@ -36,7 +35,6 @@ function SearchInput() {
             onKeyUp={e => makeRequest(e)}
           />
         </div>
-      </form>
     )
 
   // return (

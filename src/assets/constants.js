@@ -1,20 +1,21 @@
 import { HiOutlineHashtag, HiOutlineHome, HiOutlinePhotograph, HiOutlineUserGroup } from 'react-icons/hi';
 
 export const genres = [
-  { title: 'Pop', value: 'pop songs' },
-  { title: 'Hip-Hop', value: 'HIP_HOP_RAP' },
-  { title: 'Dance', value: 'DANCE' },
-  { title: 'Electronic', value: 'ELECTRONIC' },
-  { title: 'Soul', value: 'SOUL_RNB' },
-  { title: 'Alternative', value: 'ALTERNATIVE' },
-  { title: 'Rock', value: 'ROCK' },
-  { title: 'Latin', value: 'LATIN' },
-  { title: 'Film', value: 'FILM_TV' },
-  { title: 'Country', value: 'COUNTRY' },
-  { title: 'Worldwide', value: 'WORLDWIDE' },
-  { title: 'Reggae', value: 'REGGAE_DANCE_HALL' },
-  { title: 'House', value: 'HOUSE' },
-  { title: 'K-Pop', value: 'K_POP' },
+  { title: 'Podcast', value: 'Podcast' },
+  { title: 'Pop', value: 'POP' },
+  { title: 'Hip-Hop', value: 'Hip Hop Rap' },
+  { title: 'Dance', value: 'Dance' },
+  { title: 'Electronic', value: 'Electronic' },
+  { title: 'Soul', value: 'Soul Rnb' },
+  { title: 'Alternative', value: 'Alternative' },
+  { title: 'Rock', value: 'Rock' },
+  { title: 'Latin', value: 'Latin' },
+  { title: 'Film', value: 'Film Tv' },
+  { title: 'Country', value: 'Country' },
+  { title: 'Worldwide', value: 'Worldwide' },
+  { title: 'Reggae', value: 'Reggae Dance Hall' },
+  { title: 'House', value: 'House' },
+  { title: 'K-Pop', value: 'K Pop' },
 ];
 
 export const links = [
