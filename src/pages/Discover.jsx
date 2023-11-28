@@ -4,9 +4,9 @@ import { genres } from '../assets/constants'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchMusic, fetchToken } from '../redux/features/musicSlice'
+ 
 
-
-
+ 
  
 function Discover() { 
   const dispatch = useDispatch() 
