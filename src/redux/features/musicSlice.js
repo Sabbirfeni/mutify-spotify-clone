@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 // import { fetchToken } from "./tokenSlice";
 
+const API_URL = 'https://api.spotify.com/v1'
 // Token access fetching function
 export const fetchToken = createAsyncThunk('token/fetchToken', async () => {
     const clientID = 'bd9d575abfa84db8b2771f76cedd856b'
@@ -19,8 +20,9 @@ export const fetchToken = createAsyncThunk('token/fetchToken', async () => {
 })
 
 // Music fetching function
-export const fetchMusic = createAsyncThunk('music/fetchMusic', async music => {
-    const { token, searchKeyword  } = music
+export const fetchMusic = createAsyncThunk('musics/fetchMusics', async parameter => {
+    const { searchValue, music  } = parameter;
+    const { token } = music;
     const parameters = {
         method: 'get',
         headers: {
@@ -28,16 +30,110 @@ export const fetchMusic = createAsyncThunk('music/fetchMusic', async music => {
             'Authorization': `Bearer ${token}`
         }
     }
-    const res = await fetch(`https://api.spotify.com/v1/search?q=${searchKeyword !== '' ? searchKeyword : 'islamic'}&type=album&limit=50`, parameters)
+    const res = await fetch(`${API_URL}/search?q=${searchValue !== '' ? searchValue : 'quran'}&type=album&limit=50`, parameters)
     const data = res.json()
     return data
 })
+
+export const fetchSong = createAsyncThunk('song/fetchSong', async parameter => {
+   
+   const { token, songid } = parameter
+    const parameters = {
+        method: 'get',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    }
+    
+    try {
+        const res = await fetch(`https://api.spotify.com/v1/albums/${songid}`, parameters)
+        const data = await res.json()
+        return data
+    } catch(err) {
+        console.log(err.message)
+    }
+    
+})
+
+export const fetchArtist = createAsyncThunk('artist/fetchArtist', async parameter => {
+   
+    const { token, artistId } = parameter
+     const parameters = {
+         method: 'get',
+         mode: 'cors',
+         headers: {
+             'Content-Type': 'application/json',
+             'Authorization': `Bearer ${token}`
+         }
+     }
+     
+     try {
+         const res = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, parameters)
+         const data = await res.json()
+         return data
+     } catch(err) {
+         console.log(err.message)
+     }
+     
+ })
+
+ export const fetchTopArtists = createAsyncThunk('artist/fetchTopArtist', async parameter => {
+   
+    const { token } = parameter
+    // console.log(token)
+     const parameters = {
+         method: 'get',
+         headers: {
+             'Content-Type': 'application/json',
+             'Authorization': `Bearer ${token}`
+         }
+     }
+     
+     try {
+         const res = await fetch(`${API_URL}/search?q='top artists'&type=album&limit=50`, parameters)
+         const data = res.json()
+         return data
+     } catch(err) {
+         console.log(err.message)
+     }
+     
+ })
+
+ export const getSongByCountry = createAsyncThunk('countrySong/fetchCountrySong', async parameter => {
+   
+    const { token, country } = parameter
+
+     const parameters = {
+         method: 'get',
+         mode: 'cors',
+         headers: {
+             'Content-Type': 'application/json',
+             'Authorization': `Bearer ${token}`
+         }
+     }
+     
+     try {
+         const res = await fetch(`${API_URL}/browse/categories?country=${country}&locale=sv_BD`, parameters)
+         const data = await res.json()
+         return data
+     } catch(err) {
+         console.log(err.message)
+     }
+     
+ })
+
 
 const musicSlice = createSlice({
     name: 'music',
     initialState: {
         isLoading: false,
-        allMusic: null, 
+        allMusic: null,
+        song: null,
+        artistData: null,
+        countrySongs: null,
+        topArtists: null,
         error: null,
         searchKeyword: '',
         token: null
@@ -75,11 +171,84 @@ const musicSlice = createSlice({
         .addCase(fetchMusic.rejected, (state, action) => {
             state.isLoading = false;
             state.allMusic = null;
+            state.error = action.payload;
+          });
+
+        // Artist Builder
+        builder.addCase(fetchArtist.pending, state => {
+            state.isLoading = true
+        })
+        .addCase(fetchArtist.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.artistData = action.payload;
+            state.error = null
+        })
+        .addCase(fetchArtist.rejected, (state, action) => {
+            state.isLoading = false;
+            state.artistData = null;
             state.error = action.payload.error.message;
+          });
+        
+        // Get Song by Country Builder
+        builder.addCase(getSongByCountry.pending, state => {
+            state.isLoading = true
+        })
+        .addCase(getSongByCountry.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.countrySongs = action.payload;
+            state.error = null
+        })
+        .addCase(getSongByCountry.rejected, (state, action) => {
+            state.isLoading = false;
+            state.countrySongs = null;
+            state.error = action.payload.error.message;
+        });
+        
+        // Get Top Artists
+        builder.addCase(fetchTopArtists.pending, state => {
+            state.isLoading = true
+        })
+        .addCase(fetchTopArtists.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.topArtists = action.payload;
+            state.error = null
+        })
+        .addCase(fetchTopArtists.rejected, (state, action) => {
+            state.isLoading = false;
+            state.topArtists = null;
+            state.error = action.payload.error.message;
+        });
+        
+        
+    }
+})
+
+const musicDetailsSlice = createSlice({
+    name: 'musicDetails',
+    initialState: {
+        isLoading: false,
+        musicData: null,
+        error: null
+    },
+    extraReducers: builder => {
+        // Song builder
+        builder.addCase(fetchSong.pending, state => {
+            state.isLoading = true
+        })
+        .addCase(fetchSong.fulfilled, (state, action) => {
+            
+            state.isLoading = false;
+            state.musicData = action.payload;
+            state.error = null
+        })
+        .addCase(fetchSong.rejected, (state, action) => {
+            state.isLoading = false;
+            state.musicData = null;
+            state.error = action.payload;
           });
     }
 })
 
-
 export const { handleSearch } = musicSlice.actions
-export default musicSlice.reducer
+export const musicReducer = musicSlice.reducer
+export const musicDetailsReducer = musicDetailsSlice.reducer

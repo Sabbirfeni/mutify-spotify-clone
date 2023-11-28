@@ -57,4 +57,13 @@ html {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
-  
+/*   
+
+.fadein {
+  animation: fadein 1s ease;
+}
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+} */

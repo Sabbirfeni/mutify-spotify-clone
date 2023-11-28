@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Loader, Error, SongCard } from '../components'
 import { genres } from '../assets/constants'
 
@@ -6,29 +6,34 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchMusic, fetchToken } from '../redux/features/musicSlice'
  
 
+
+>>>>>>> 66aaa4f71e7428d014ae96c15b9c1f4905370062
  
  
 function Discover() { 
   const dispatch = useDispatch() 
-  const musicState = useSelector(state => state.music)
+  const music = useSelector(state => state.music)
   const {isPlaying, activeSong } = useSelector(state => state.player)
+  const searchValue = useSelector(state => state.music.searchKeyword)
+  const { allMusic, isLoading, error, token } = music
 
-  const { allMusic, isLoading, error, token } = musicState
+  const divRef = useRef(null)
 
-  useEffect(() => {
+  useEffect(() => {  
+
       dispatch(fetchToken())
-        
-      dispatch(fetchMusic(musicState))
+      dispatch(fetchMusic({ music, searchValue }))
+      
   }, [])
-  
-
+     
+   
   if(isLoading) return <Loader/>
   if(error) return <Error/> 
-  if(allMusic) return (
-    <div className='flex flex-col'>
+  if(allMusic) return (  
+    <div ref={divRef} className='flex flex-col'>
         <div className='w-full flex justify-between items-center sm:flex-row flex-col mt-4 mb-10'>
-          <h2 className='font-bold text-3xl text-black text-left'>
-            Discover <span className='text-red-500'>"genre title"</span>
+          <h2 className='font-bold text-3xl text-white text-left'>
+            Discover <span className='text-red-500'>"Genre Title"</span>
           </h2>
           <select className='bg-black text-gray-300 px-3 py-2 text-sm rounded-lg outline-none sm:mt-0 mt-5'
             onChange={() => {}}
