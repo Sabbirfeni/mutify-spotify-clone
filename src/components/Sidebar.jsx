@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
 import { links } from '../assets/constants'
 import { NavLink } from 'react-router-dom'
-import { IoClose, IoReorderThree } from "react-icons/io5";
+import { useDispatch, useSelector } from 'react-redux'
+import { setMobileMenuOpen } from '../redux/features/mobileMenuSlice';
+import { logo } from '../assets/images';
+import './sidebar.css'
 
 function Sidebar() {
-    const [ mobileMenuOpen, setMobileMenuOpen ] = useState(false)
-    
+
+    const { mobileMenuOpen } = useSelector(state => state.mobileMenu);
+    const dispatch = useDispatch();
+
     const NavLinks = ({handleClick}) => (
-        <div className='mt-10 text-white'>
+        <div className='mt-5 text-white'>
             {links.map(item => (
                 <NavLink 
                 key={item.name} 
@@ -23,19 +28,18 @@ function Sidebar() {
     ) 
   return (
     <>
-        <div className='md:flex hidden flex-col w-[240px] py-10 px-4'>
+        <div className='lg:flex hidden flex-col w-[240px] py-10 px-4'>
+            <div className='flex flex-col items-center'>
+                <img src={logo} className='w-16' alt="logo" />
+                <h4 className='text-xl text-gray-300 mt-2 font-medium logo'>Mutify Play</h4>
+            </div>
+            
             <NavLinks/>
         </div>
-        <div className='absolute md:hidden block top-6 right-3'>
-            {mobileMenuOpen ? (
-                <IoClose className='w-6 h-6 cursor-pointer' onClick={() => setMobileMenuOpen(false)}/>
-            ) : (
-                <IoReorderThree className='w-6 h-6 cursor-pointer' onClick={() => setMobileMenuOpen(true)}/>
-            )}
-        </div>
-        <div className={`absolute top-0 h-screen w-2/3 bg-gradient-to-tl from-white/10 to-[#483d8b] backdrop-blur-lg z-10 p-6 md:hidden
+        
+        <div className={`absolute top-0 h-screen w-2/3 bg-gradient-to-tl from-white/10 to-[#483d8b] backdrop-blur-lg z-10 p-6 lg:hidden
             smooth-transition ${mobileMenuOpen ? 'left-0' : '-left-full'}`}>
-                <NavLinks handleClick={() => setMobileMenuOpen(false)}/>
+                <NavLinks handleClick={() => dispatch(setMobileMenuOpen(false))}/>
         </div>
     </>
     

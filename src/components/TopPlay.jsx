@@ -26,20 +26,14 @@ function TopPlay() {
         dispatch(playPause(true))
     }
 
-    const divRef = useRef(null)
-  
-
-    useEffect(() => {
-        divRef.current.scrollIntoView({ behavior: 'smooth' });
-    })
 
   return (
-    <div ref={divRef} className='xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 xl:max-w-[500px] max-w-full flex-col'>
-        <div className='w-full xl:flex hidden flex-col'>
+    <div className='xl:flex hidden xl:mb-0 mb-6 flex-1 lg:max-w-300 xl:max-w-[330px] 2xl:max-w-[380px] max-w-full flex-col py-5 px-3 pr-10'>
+        <div className='w-full flex flex-col'>
             <div className='flex flex-row justify-between items-center'>
-                <h2 className='font-bold text-2xl text-white'>Top Charts</h2>
+                <h2 className='font-bold text-xl text-white'>Top Charts</h2>
                 <Link to='/top-artists'>
-                    <p className='text-base cursor-pointer hover:text-gray-500 text-white'>See more</p>
+                    <p className='text-sm cursor-pointer hover:text-white text-gray-500'>See more</p>
                 </Link>
             </div>
             <div className='mt-4 flex flex-col gap-0'>
@@ -54,11 +48,11 @@ function TopPlay() {
             </div>
         </div>
 
-        <div className='w-full flex flex-col mt-6'>
+        {/* <div className='w-full flex flex-col mt-6'>
             <div className='flex flex-row justify-between items-center mb-4'>
-                <h2 className='font-bold text-2xl text-white'>Top Artists</h2>
+                <h2 className='font-bold text-xl text-white'>Top Artists</h2>
                 <Link to='/top-artists'>
-                    <p className='text-base cursor-pointer text-white hover:text-gray-500'>See more</p>
+                    <p className='text-sm cursor-pointer hover:text-white text-gray-500'>See more</p>
                 </Link>
             </div>
             <Swiper
@@ -83,7 +77,7 @@ function TopPlay() {
                     </SwiperSlide>
                 ))}
             </Swiper>
-        </div>
+        </div> */}
     </div>
   )
 }
