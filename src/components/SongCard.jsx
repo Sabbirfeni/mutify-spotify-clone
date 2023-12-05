@@ -21,7 +21,7 @@ function SongCard({ isPlaying, activeSong, countrySong, music, i, data }) {
   }
    
   return (
-    <div className='flex flex-col w-full p-4 bg-[#191624] backdrop-blur-sm animate-slideup duration-1000 rounded-lg cursor-pointer'>
+    <div className='flex flex-col w-full p-4 bg-[#1e1d20] backdrop-blur-sm animate-slideup duration-1000 rounded-lg cursor-pointer'>
       <div className='relative w-full group'>
         <div className={`absolute inset-0 justify-center items-center hidden group-hover:bg-opacity-60 group-hover:flex group-hover:bg-black ${activeMusic.title === music.title ? 'flex bg-black bg-opacity-70' : 'hidded'}`}>
           <PlayPause isPlaying={isPlaying} activeMusic={activeSong} music={music && music} handlePauseClick={handlePauseClick} handlePlayClick={handlePlayClick}/>

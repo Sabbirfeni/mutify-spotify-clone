@@ -24,17 +24,17 @@ function Navbar() {
     }
 
     return (
-      <div className='flex flex-row justify-between items-center md:px-4 xl:px-5 px-3 py-2'>
+      <div className='flex flex-row justify-between items-center px-5 py-4'>
           <div className='flex items-center'>
               
-              <div className='lg:hidden flex flex-row items-center mr-4 '>
+              <div className='lg:hidden flex flex-row items-center mr-4'>
                 <img src={logo} className='w-8' alt="logo" />
                 <h4 className='text-sm text-gray-300 ml-2 font-medium logo'>Mutify</h4>
               </div>
 
               <FiSearch className='w-5 h-5 text-gray-600'/>
               <input
-                className='bg-transparent border-none md:w-64 w-40 outline-none placeholder:text-gray-500 text-base text-white p-4'
+                className='bg-[#191624] border-none rounded-md md:w-64 w-40 outline-none placeholder:text-gray-500 text-base text-white px-4 py-2 ml-2'
                 name='search-field'
                 autoComplete='off'
                 id='search-field'

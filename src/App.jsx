@@ -20,19 +20,19 @@ function App() {
     })
 
   return ( 
-    <div className='flex lg:gap-3 xl:gap-5 gap-0 bg-black'>
-        <div className='bg-[#191624]'>
+    <div className='flex lg:gap-0 xl:gap-5 gap-0 bg-black'>
+        <div className='bg-[#191624] z-20'>
             <Sidebar/>
         </div>
         <div className='flex-1 flex flex-col'>
-            <div><Navbar/></div>
+            <div className='fixed w-full z-10 bg-black'><Navbar/></div>
             {/* h-[calc(100vh-72px)] */}
-            <div ref={divRef} className='h-[100vh] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse gap-5'>
-                <div  className='flex-1 h-fit mt-5'>
+            <div ref={divRef} className='h-[100vh] flex xl:flex-row flex-col-reverse gap-5'>
+                <div  className='flex-1 overflow-y-scroll hide-scrollbar sm:px-3 xl:px-0 px-2 pb-4'>
                     <Outlet/>
                     {/* <Controls/> */}
                 </div>
-                <div className='xl:sticky relative top-0 h-fit rounded-lg bg-[#191624]'>
+                <div className='xl:sticky xl:flex hidden relative top-0 overflow-y-scroll hide-scrollbar'>
                     <TopPlay/>
                 </div>
             </div>

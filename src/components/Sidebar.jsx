@@ -47,3 +47,29 @@ function Sidebar() {
 }
 
 export default Sidebar
+
+
+// <Swiper
+//                 slidesPerView={3}
+//                 spaceBetween={30}
+//                 freeMode={true}
+//                 pagination={{
+//                 clickable: true,
+//                 }}
+//                 modules={[FreeMode, Pagination]}
+//                 className="mySwiper"
+//             >
+//                 {topPlays?.map((song, i) => (
+//                     <SwiperSlide
+//                     key={song.id}
+//                     style={{ width: '120px', height: 'auto' }}
+//                     className='shadow-lg rounded-full animate-slideright'
+//                     >
+//                         <Link to={`/artists/${song?.artists[0].id}`}>
+//                             <img src={song?.images[0].url} alt="artists" 
+//                             className='rounded-full w-20 object-cover'
+//                             />
+//                         </Link>
+//                     </SwiperSlide>
+//                 ))}
+//             </Swiper>

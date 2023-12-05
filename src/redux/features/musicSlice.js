@@ -81,7 +81,7 @@ export const fetchArtist = createAsyncThunk('artist/fetchArtist', async paramete
  })
 
  export const fetchTopArtists = createAsyncThunk('artist/fetchTopArtist', async parameter => {
-   
+    
     const { token } = parameter
     // console.log(token)
      const parameters = {
@@ -99,7 +99,7 @@ export const fetchArtist = createAsyncThunk('artist/fetchArtist', async paramete
      } catch(err) {
          console.log(err.message)
      }
-     
+    
  })
 
  export const getSongByCountry = createAsyncThunk('countrySong/fetchCountrySong', async parameter => {
@@ -116,7 +116,7 @@ export const fetchArtist = createAsyncThunk('artist/fetchArtist', async paramete
      }
      
      try {
-         const res = await fetch(`${API_URL}/browse/categories?country=${country}&locale=sv_BD`, parameters)
+         const res = await fetch(`${API_URL}/search?q=${country}&type=album&limit=50`, parameters)
          const data = await res.json()
          return data
      } catch(err) {

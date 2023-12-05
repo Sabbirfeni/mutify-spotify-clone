@@ -13,7 +13,6 @@ function TopArtists() {
     useEffect(() => {
         dispatch(fetchTopArtists({ token }))
     }, [])
-
     if(isLoading) {
       return <Loader/>
     }
@@ -23,10 +22,10 @@ function TopArtists() {
     if(topArtists) {
       return (
         <div className='flex flex-col'>
-          <h2 className='font-bold text-3xl text-left mt-4 mb-10 text-white'>Top Artists</h2>
-          <div className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3'>
+          <h2 className='font-bold text-3xl text-left px-4 mt-24 mb-10 text-white'>Top Artists</h2>
+          <div className='grid sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 grid-cols-2 gap-3'>
             {topArtists?.albums?.items.map((music, i) => {
-              return <ArtistCard key={music.id} track={music}/>
+              return <ArtistCard key={music.id} song={music}/>
             })}
           </div>
         </div>
