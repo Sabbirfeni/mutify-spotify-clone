@@ -27,10 +27,7 @@ function Discover() {
   useEffect(() => {  
 
       dispatch(fetchToken())
-
       dispatch(fetchMusic({ music, queryValue: searchValue }))
-
-      
   }, [])
      
    
@@ -38,11 +35,11 @@ function Discover() {
   if(error) return <Error/> 
   if(allMusic) return (  
     <div ref={divRef} className='flex flex-col mt-12 pt-12'>
-        <div className='w-full flex justify-between items-center sm:flex-row flex-col px-4 mb-10'>
-          <h2 className='font-bold text-3xl text-white text-left'>
+        <div className='w-full flex justify-between items-center flex-row px-4 md:mb-10 mb-6'>
+          <h2 className='font-bold md:text-3xl text-xl text-white text-left'>
             Discover <span className='text-red-500'>{searchValue !== '' ? searchValue : genreValue}</span>
           </h2>
-          <select className='bg-slate-800 text-gray-300 px-3 py-2 text-sm rounded-lg outline-none sm:mt-0 mt-5'
+          <select className='bg-slate-800 text-gray-300 px-3 py-2 text-sm rounded-lg outline-none'
             onChange={(e) => fetchMusicOnGenreChange(e)}
             value={genreValue}
           >
@@ -56,7 +53,7 @@ function Discover() {
         
         <div className='grid sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 grid-cols-2 gap-3'>
             {allMusic?.albums?.items.map((singleMusic, i) => {
-              return <SongCard key={singleMusic.id} isPlaying={isPlaying} activeSong={activeSong} data={allMusic} music={singleMusic} i={i}/>
+              return <SongCard key={singleMusic.id} isPlaying={isPlaying} activeSong={singleMusic} data={allMusic} music={singleMusic} i={i}/>
             })}
         </div>
         

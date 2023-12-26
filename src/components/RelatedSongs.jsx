@@ -36,7 +36,7 @@ const dispatch = useDispatch()
     if(allMusic) {
         return (
             <div className='flex flex-col'>
-                <h1 className='font-bold text-3xl'>Related Songs</h1>
+                <h1 className='font-bold text-xl text-[#fff]'>Related Songs</h1>
 
                 <div className='mt-6 w-full flex flex-col'>
                     {allMusic?.albums?.items.slice(15, 25).map((song, i) => {

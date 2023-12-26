@@ -13,7 +13,7 @@ function ArroundYou() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        axios.get(`https://geo.ipify.org/api/v2/country?apiKey=at_hoNNN28CmNO7LJiL6PU1fzthZXcuO`)
+        axios.get(`https://geo.ipify.org/api/v2/country?apiKey=at_rLPGDRwPLY1NbKa7q6OvRVHGyzkPf`)
         .then(res => {
           const country = countryList[res?.data?.location?.country];
           setCountryName(country)
@@ -32,7 +32,7 @@ function ArroundYou() {
     if(countrySongs?.albums) {
       return (
         <div className='flex flex-col'>
-          <h2 className='font-bold text-3xl text-left px-4 mb-10 mt-24 text-white'>Around <span className='text-red-500'>"{countryName}"</span></h2>
+          <h2 className='font-bold md:text-3xl text-xl text-left px-4 md:mb-10 mb-6 mt-24 text-white'>Around <span className='text-red-500'>"{countryName}"</span></h2>
           <div className='grid sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 grid-cols-2 gap-3'>
             {countrySongs?.albums?.items.map((singleMusic, i) => {
                return <SongCard key={singleMusic.id} isPlaying={isPlaying} activeSong={activeSong} data={allMusic} music={singleMusic} i={i}/>

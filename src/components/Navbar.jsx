@@ -24,7 +24,7 @@ function Navbar() {
     }
 
     return (
-      <div className='flex flex-row justify-between items-center px-5 py-4'>
+      <div className='flex flex-row justify-between items-center px-5 py-4 '>
           <div className='flex items-center'>
               
               <div className='lg:hidden flex flex-row items-center mr-4'>
@@ -34,7 +34,7 @@ function Navbar() {
 
               <FiSearch className='w-5 h-5 text-gray-600'/>
               <input
-                className='bg-[#191624] border-none rounded-md md:w-64 w-40 outline-none placeholder:text-gray-500 text-base text-white px-4 py-2 ml-2'
+                className='bg-[#000] border-none rounded-md md:w-64 w-40 outline-none placeholder:text-gray-500 text-base text-white px-4 py-2 ml-2'
                 name='search-field'
                 autoComplete='off'
                 id='search-field'

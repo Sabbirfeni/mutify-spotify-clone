@@ -26,17 +26,17 @@ function SongDetails() {
         return (
             <div className='flex flex-col'>
                 <DetailsHeader artistId='' songData={musicData}/>
-                <div className='mb-10 mt-10'>
-                    <h2 className='text-3xl font-bold text-white'>Details:</h2>
-                    <div className="mt-5">
+                <div className='mb-10 sm:mt-20 mt-10 sm:pl-5 pl-2'>
+                    <h2 className='sm:text-3xl text-lg text-white'>Details</h2>
+                    <div className="sm:mt-3 mt-2">
                         <div className='flex md:flex-row flex-col'>
                             {/* <img className='md:w-80 w-full' src={musicData.images[0].url} alt="image" /> */}
                             <div className='text-white'>
-                                <p className='text-base my-1'><span className='font-bold'>Song Name : </span>{musicData.name}</p>
-                                <p className='text-base my-1'><span className='font-bold'>Rank : </span>{musicData.popularity}</p>
-                                <p className='text-base my-1'><span className='font-bold'>Artist Name : </span>{musicData.artists[0].name}</p>
-                                <p className='text-base my-1'><span className='font-bold'>Released on : </span>{musicData.release_date}</p>
-                                <p className='text-base my-1'><span className='font-bold'>Copyrights : </span>{musicData.copyrights[0].text}</p>
+                                <p className='text-base my-1'><span className=''>Song Name : </span>{musicData.name}</p>
+                                <p className='text-base my-1'><span className=''>Rank : </span>{musicData.popularity}</p>
+                                <p className='text-base my-1'><span className=''>Artist Name : </span>{musicData.artists[0].name}</p>
+                                <p className='text-base my-1'><span className=''>Released on : </span>{musicData.release_date}</p>
+                                <p className='text-base my-1'><span className=''>Copyrights : </span>{musicData.copyrights[0].text}</p>
                             </div>    
                         </div>
 
