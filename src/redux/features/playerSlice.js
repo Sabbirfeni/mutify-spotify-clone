@@ -1,11 +1,33 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
+export const getSongPlayerData = createAsyncThunk('track/getTrack', async parameter => {
+  const { token, songId } = parameter
+  const parameters = {
+      method: 'get',
+      mode: 'cors',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+      }
+  }
+  try {
+      const res = await fetch(` https://api.spotify.com/v1/audio-features/11dFghVXANMlKmJXsNCbNl`, parameters)
+      const data = await res.json()
+      console.log(data)
+      return data
+  }catch(err) {
+      console.log(err)
+  }
+})
 
 const initialState = {
+  isLoading: false,
   currentSongs: [],
   currentIndex: 0,
   isActive: false,
   isPlaying: false,
   activeSong: {},
+  songPlayerData: {},
   genreListId: '',
 };
 
@@ -58,6 +80,17 @@ const playerSlice = createSlice({
       state.genreListId = action.payload;
     },
   },
+  extraReducers: builder => {
+     // Getting active track
+     builder
+     .addCase(getSongPlayerData.pending, state => {
+         state.isLoading = true
+     })
+     .addCase(getSongPlayerData.fulfilled, (state, action) => {
+         state.isLoading = false;
+         state.songPlayerData = action.payload;
+     } )
+  }
 });
 
 export const { setActiveSong, nextSong, prevSong, playPause, selectGenreListId } = playerSlice.actions;

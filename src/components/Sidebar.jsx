@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { links } from '../assets/constants'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setMobileMenuOpen } from '../redux/features/mobileMenuSlice';
 import { logo } from '../assets/images';
@@ -29,10 +29,10 @@ function Sidebar() {
   return (
     <>
         <div className='lg:flex hidden flex-col w-[240px] py-10 px-4'>
-            <div className='flex flex-col items-center'>
+            <Link className='flex flex-col items-center'>
                 <img src={logo} className='w-16' alt="logo" />
                 <h4 className='text-xl text-gray-300 mt-2 font-medium logo'>Mutify Play</h4>
-            </div>
+            </Link>
             
             <NavLinks/>
         </div>

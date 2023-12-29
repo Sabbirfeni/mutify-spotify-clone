@@ -15,9 +15,11 @@ export const fetchToken = createAsyncThunk('token/fetchToken', async () => {
             'Content-Type': 'application/x-www-form-urlencoded'
             }
         })
-    const data = res.json()
+    const data = await res.json()
+    localStorage.setItem('token', JSON.stringify(data.access_token))
+    // console.log(data)
     return data 
-})
+}) 
 
 // Music fetching function
 export const fetchMusic = createAsyncThunk('musics/fetchMusics', async parameter => {
@@ -32,7 +34,8 @@ export const fetchMusic = createAsyncThunk('musics/fetchMusics', async parameter
     }
     console.l
     const res = await fetch(`${API_URL}/search?q=${queryValue !== '' ? queryValue : 'quran'}&type=album&limit=50`, parameters)
-    const data = res.json()
+    const data = await res.json()
+
     return data
 })
 
@@ -80,6 +83,8 @@ export const fetchArtist = createAsyncThunk('artist/fetchArtist', async paramete
      
  })
 
+
+
  export const fetchTopArtists = createAsyncThunk('artist/fetchTopArtist', async parameter => {
     
     const { token } = parameter
@@ -94,7 +99,7 @@ export const fetchArtist = createAsyncThunk('artist/fetchArtist', async paramete
      
      try {
          const res = await fetch(`${API_URL}/search?q='top artists'&type=album&limit=50`, parameters)
-         const data = res.json()
+         const data = await res.json()
          return data
      } catch(err) {
          console.log(err.message)
@@ -246,7 +251,9 @@ const musicDetailsSlice = createSlice({
             state.isLoading = false;
             state.musicData = null;
             state.error = action.payload;
-          });
+        });
+
+       
     }
 })
 

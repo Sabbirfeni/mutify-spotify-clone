@@ -19,9 +19,8 @@ function App() {
     
     const divRef = useRef(null)
     const { activeSong } = useSelector((state) => state.player);
-    console.log(activeSong)
     const mySong = JSON.stringify(activeSong)
-    console.log(mySong)
+
     useEffect(() => {
         divRef.current.scrollIntoView({ behavior: 'smooth' });
     })

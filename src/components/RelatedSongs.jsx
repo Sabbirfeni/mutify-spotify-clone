@@ -6,7 +6,7 @@ import { playPause, setActiveSong } from '../redux/features/playerSlice'
 import SongBar from './SongBar'
 
 function RelatedSongs() {
-const dispatch = useDispatch() 
+    const dispatch = useDispatch() 
     const musicState = useSelector(state => state.music)
     const { allMusic, isLoading, error, token } = musicState
     console.log(allMusic)
@@ -42,7 +42,7 @@ const dispatch = useDispatch()
                     {allMusic?.albums?.items.slice(15, 25).map((song, i) => {
                         return (
                             <SongBar
-                                key={`${song.key}+${song.name}`}
+                                key={`${i}`}
                                 song={song}
                                 i={i}
                                 isPlaying={isPlaying}

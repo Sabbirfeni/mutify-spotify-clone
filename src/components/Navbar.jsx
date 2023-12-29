@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { fetchMusic, handleSearch } from '../redux/features/musicSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FiSearch } from 'react-icons/fi'
 import { IoClose, IoReorderThree } from "react-icons/io5";
 import { setMobileMenuOpen } from '../redux/features/mobileMenuSlice'
@@ -27,10 +27,10 @@ function Navbar() {
       <div className='flex flex-row justify-between items-center px-5 py-4 '>
           <div className='flex items-center'>
               
-              <div className='lg:hidden flex flex-row items-center mr-4'>
+              <Link to='/' className='lg:hidden flex flex-row items-center mr-4'>
                 <img src={logo} className='w-8' alt="logo" />
                 <h4 className='text-sm text-gray-300 ml-2 font-medium logo'>Mutify</h4>
-              </div>
+              </Link>
 
               <FiSearch className='w-5 h-5 text-gray-600'/>
               <input

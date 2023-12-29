@@ -24,13 +24,16 @@ function Discover() {
     dispatch(fetchMusic({ music, queryValue: inputValue }))
   }
 
-  useEffect(() => {  
-
-      dispatch(fetchToken())
-      dispatch(fetchMusic({ music, queryValue: searchValue }))
+  useEffect(() => {
+    dispatch(fetchToken())
+    console.log('token')
   }, [])
-     
-   
+
+  useEffect(() => {
+    dispatch(fetchMusic({ music, queryValue: searchValue }))
+    console.log('fetch music')
+  }, [])
+    
   if(isLoading) return <Loader/>
   if(error) return <Error/> 
   if(allMusic) return (  
@@ -53,7 +56,7 @@ function Discover() {
         
         <div className='grid sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 grid-cols-2 gap-3'>
             {allMusic?.albums?.items.map((singleMusic, i) => {
-              return <SongCard key={singleMusic.id} isPlaying={isPlaying} activeSong={singleMusic} data={allMusic} music={singleMusic} i={i}/>
+              return <SongCard key={singleMusic.id} songId={singleMusic.id} isPlaying={isPlaying} activeSong={singleMusic} data={allMusic} music={singleMusic} i={i}/>
             })}
         </div>
         
