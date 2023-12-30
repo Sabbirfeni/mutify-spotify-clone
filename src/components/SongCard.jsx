@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import PlayPause from './MusicPlayer/PlayPause'
 import { useDispatch, useSelector } from 'react-redux'
-import { getSongPlayerData, playPause, setActiveSong } from '../redux/features/playerSlice'
+import {playPause, setActiveSong } from '../redux/features/playerSlice'
 
 function SongCard({ songId, isPlaying, activeSong, countrySong, music, i, data }) {
   const musicData = useSelector(state => state.music)
+
   const { token } = musicData
   const dispatch = useDispatch()
 
@@ -13,9 +14,8 @@ function SongCard({ songId, isPlaying, activeSong, countrySong, music, i, data }
     dispatch(playPause(false))
   }
 
-  const handlePlayClick  = async songId => {
+  const handlePlayClick  = () => {
     dispatch(setActiveSong({ music, data, i }))
-    dispatch(getSongPlayerData({ token, songId }))
     dispatch(playPause(true))
   }
 
@@ -25,7 +25,7 @@ function SongCard({ songId, isPlaying, activeSong, countrySong, music, i, data }
     <div className='flex flex-col w-full p-4 bg-[#1e1d20] backdrop-blur-sm animate-slideup duration-1000 rounded-lg cursor-pointer'>
       <div className='relative w-full group'>
         <div className={`absolute inset-0 justify-center items-center hidden group-hover:bg-opacity-60 group-hover:flex group-hover:bg-black`}>
-          <PlayPause isPlaying={isPlaying} activeSong={activeSong} music={music && music} handlePauseClick={handlePauseClick} handlePlayClick={() => handlePlayClick(songId)}/>
+          <PlayPause isPlaying={isPlaying} activeSong={activeSong} musicUrl={music.external_urls.spotify} handlePauseClick={handlePauseClick} handlePlayClick={handlePlayClick}/>
         </div>
         <img alt='music_img' className='object-cover' src={music ? music.images[0].url : countrySong.icons[0].url}/>
       </div>

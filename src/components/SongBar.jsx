@@ -17,7 +17,7 @@ const SongBar = ({ song, i, isPlaying, activeSong, handlePauseClick, handlePlayC
                 </Link>
             </div>
         </div>
-        <PlayPause topPlay={true}/>
+        <PlayPause topPlay={true} musicUrl={song.external_urls.spotify}/>
         {/* {song.name.length > 10 ? song.name.substring(0, 15) + '...' : song.name} */}
     </div>
     }

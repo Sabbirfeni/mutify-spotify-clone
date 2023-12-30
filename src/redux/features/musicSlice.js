@@ -32,10 +32,8 @@ export const fetchMusic = createAsyncThunk('musics/fetchMusics', async parameter
             'Authorization': `Bearer ${token}`
         }
     }
-    console.l
     const res = await fetch(`${API_URL}/search?q=${queryValue !== '' ? queryValue : 'quran'}&type=album&limit=50`, parameters)
     const data = await res.json()
-
     return data
 })
 

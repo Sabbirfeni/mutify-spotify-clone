@@ -13,7 +13,7 @@ function SongDetails() {
     const { activeSong, isPlaying } = useSelector(state => state.player)
     const { isLoading, musicData, error } = useSelector(state => state.musicDetail)
     const { token, allMusic } = useSelector(state => state.music)
-
+    // console.log(musicData)
     useEffect(() => {
         dispatch(fetchSong({token, songid}))
     }, [songid])

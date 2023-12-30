@@ -36,11 +36,11 @@ function App() {
             <div ref={divRef} className='h-[100vh] flex xl:flex-row flex-col-reverse gap-5'>
                 <div className='relative flex-1 overflow-y-scroll hide-scrollbar sm:px-3 xl:px-0 px-2 pb-4'>
                     <Outlet/>
-                    {activeSong?.name && (
+                    {/* {activeSong?.name && (
                         <div className="absolute h-28 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-[#2a2a80] backdrop-blur-lg rounded-t-3xl z-10">
                             <MusicPlayer />
                         </div>
-                    )}
+                    )} */}
                 </div>
                 <div className='xl:sticky xl:flex hidden relative top-0 overflow-y-scroll hide-scrollbar'>
                     <TopPlay/>

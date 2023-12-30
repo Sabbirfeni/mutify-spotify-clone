@@ -16,7 +16,7 @@ function Discover() {
   const { allMusic, isLoading, error, token } = music
   const [ genreValue, setGenreValue ] = useState('')
   const divRef = useRef(null)
- 
+
   const fetchMusicOnGenreChange = e => {
     dispatch(handleSearch(''))
     const inputValue = e.target.value;
@@ -25,7 +25,7 @@ function Discover() {
   }
 
   useEffect(() => {
-    dispatch(fetchToken())
+    token !== dispatch(fetchToken())
     console.log('token')
   }, [])
 

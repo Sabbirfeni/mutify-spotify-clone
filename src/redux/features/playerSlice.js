@@ -11,7 +11,7 @@ export const getSongPlayerData = createAsyncThunk('track/getTrack', async parame
       }
   }
   try {
-      const res = await fetch(` https://api.spotify.com/v1/audio-features/11dFghVXANMlKmJXsNCbNl`, parameters)
+      const res = await fetch(`https://api.spotify.com/track/6DNRAIeD2hQhGnN1SeaiGX`, parameters)
       const data = await res.json()
       console.log(data)
       return data
@@ -87,6 +87,7 @@ const playerSlice = createSlice({
          state.isLoading = true
      })
      .addCase(getSongPlayerData.fulfilled, (state, action) => {
+      console.log('nonono')
          state.isLoading = false;
          state.songPlayerData = action.payload;
      } )
