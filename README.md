@@ -17,4 +17,4 @@ Youtube video or Diagram
 How to install this example Golang project on Kubernetes. How to install this example Golang project on KubernetesHow to 
 
 1.clone this project
-2. set up local kubernetes
+2. set up local kubernetes <kbd>ALT</kbd>
