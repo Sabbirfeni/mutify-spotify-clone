@@ -14,5 +14,7 @@ Intro paragraph. Intro paragraph. Intro paragraph. Intro paragraph. Intro paragr
 Youtube video or Diagram
 
 ## (User instructions) How to install this example Golang project on Kubernetes
-How to install this example Golang project on Kubernetes. How to install this example Golang project on KubernetesHow to install this example Golang project on KubernetesHow to install this example Golang project on KubernetesHow to install this example Golang project on KubernetesHow to install this example Golang project on KubernetesHow to install this example Golang project on Kubernetes
+How to install this example Golang project on Kubernetes. How to install this example Golang project on KubernetesHow to 
 
+1.clone this project
+2. set up local kubernetes
