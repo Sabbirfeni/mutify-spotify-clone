@@ -5,8 +5,7 @@ Welcome to Mutify, a dynamic and responsive web application that replicates the 
 
 ## Demo
 
-[Visit - Mutify](https://github.com/Sabbirfeni/mutify-spotify-clone){:target="_blank"}
-
+<a href="https://github.com/Sabbirfeni/mutify-spotify-clone" target="_blank">Visit - Mutify</a>
 
 ## Run Locally
 
