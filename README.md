@@ -1,6 +1,6 @@
 
 # Mutify : Dynamic Music Search & Responsive Web App
-<a href="https://github.com/sponsors/M0nica"><img align="righ" width="150" height="150" src="https://github.com/M0nica/M0nica/blob/main/octomonica/m0nica-octocat-rotating.gif?raw=true"></a>
+<a href="https://github.com/sponsors/M0nica"><img align="right" width="150" height="150" src="https://github.com/M0nica/M0nica/blob/main/octomonica/m0nica-octocat-rotating.gif?raw=true"></a>
 Welcome to Mutify, a dynamic and responsive web application that replicates the core functionalities of the Spotify web app using the Spotify Web API. This project aims to provide users with an immersive music experience, allowing them to explore, search, and enjoy their favorite tunes seamlessly across various devices.
 
 ## Demo
