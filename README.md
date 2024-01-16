@@ -17,7 +17,7 @@ Welcome to Mutify, a dynamic and responsive web application that replicates the 
 **API:** 
 </br>
 </br>
-![Figma](https://img.shields.io/badge/Spotify-%2320232a.svg?style=for-the-badge&logo=spotify&logoColor=#1DB954) 
+![Figma](https://img.shields.io/badge/Spotify_Web_Api-%2320232a.svg?style=for-the-badge&logo=spotify&logoColor=#1DB954) 
 
 ## Run Locally
 
