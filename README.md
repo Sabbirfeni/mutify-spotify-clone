@@ -4,7 +4,7 @@
 Welcome to SpotifyCloneJS, a dynamic and responsive web application that replicates the core functionalities of the Spotify web app using the Spotify Web API. This project aims to provide users with an immersive music experience, allowing them to explore, search, and enjoy their favorite tunes seamlessly across various devices.
 
 
-<p align="center">
+<p align="left">
   <img src="https://img.shields.io/badge/Python-snow?logo=python&logoColor=3776AB">
   <img src="https://img.shields.io/badge/C%2B%2B-snow?logo=c%2B%2B&logoColor=00599C">
   <img src="https://img.shields.io/badge/Java-snow?logo=coffeescript&logoColor=FC4C02">
