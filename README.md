@@ -13,7 +13,7 @@ Welcome to Mutify, a dynamic and responsive web application that replicates the 
 Clone the project
 
 ```bash
-  git clone [https://link-to-project](https://github.com/Sabbirfeni/mutify-spotify-clone.git](https://github.com/Sabbirfeni/mutify-spotify-clone.git)
+  git clone https://github.com/Sabbirfeni/mutify-spotify-clone.git
 ```
 
 Go to the project directory
