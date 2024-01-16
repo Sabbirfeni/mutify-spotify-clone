@@ -13,13 +13,13 @@ Welcome to Mutify, a dynamic and responsive web application that replicates the 
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://link-to-project](https://github.com/Sabbirfeni/mutify-spotify-clone.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd mutify-spotify-clone
 ```
 
 Install dependencies
@@ -31,6 +31,6 @@ Install dependencies
 Start the server
 
 ```bash
-  npm run start
+  npm run dev
 ```
 
