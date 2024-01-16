@@ -18,7 +18,7 @@ Welcome to Mutify, a dynamic and responsive web application that replicates the 
 </br>
 </br>
 ![Figma](https://img.shields.io/badge/Spotify_Web_Api-%2320232a.svg?style=for-the-badge&logo=spotify&logoColor=#1DB954) 
-
+<a href="https://github.com/sponsors/M0nica"><img align="left" width="150" height="150" src="https://github.com/M0nica/M0nica/blob/main/octomonica/m0nica-octocat-rotating.gif?raw=true"></a>
 ## Run Locally
 
 Clone the project
