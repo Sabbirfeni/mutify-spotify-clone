@@ -45,6 +45,13 @@ Start the server
   npm run dev
 ```
 
+
+
+Titles and internal titles
+Introduction - the project's aim
+Technologies
+Launch
+
 ## Authors
 
 - [@sabbirfeni](https://www.github.com/Sabbirfeni)
